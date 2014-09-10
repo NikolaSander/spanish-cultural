@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+	<title>Cultural Evolution</title>
+	<meta name=viewport content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/png">
+	<link href="dist/app-v1.css" rel="stylesheet" media="all">
+
+	<!--[if lt IE 9]><script src=javascripts/html5shiv-printshiv.js></script><![endif]-->
+  <script src="dist/app-v1.js"></script>
+  <style>
+    body {
+      background-color: white;
+      text-align: center;
+      min-width: 200px;
+    }
+    #timeline {
+      position: relative;
+      margin-top: 3ex;
+    }
+    #diagram {
+      margin: 0 auto;
+      max-width: 620px;
+    }
+    footer {
+      position: absolute;
+      bottom: 1ex;
+      right: 0;
+    }
+    @media all and (max-width: 620px) {
+      .year label {
+        padding: 8px 10px 5px;
+        font-size: 13px;
+      }
+      svg {
+        font-size: 15px;
+      }
+      text.region {
+        font-size: 16px;
+      }
+
+    }
+    @media all and (max-width: 550px) {
+      .year label {
+        font-size: 11px;
+      }
+    }
+    @media all and (max-width: 450px) {
+      .year label {
+        font-size: 9px;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div id="timeline"></div>
+  </nav>
+  <div id="diagram"></div>
+  <footer>
+    <small>English version at <a href="http://www.nikolasander.com/cultural-evolution/" target="_blank">www.nikolasander.com/cultural-evolution</a></small>
+  </footer>
+
+<script>
+    (function() {
+      var datafile = 'json/culture_spanish.json';
+      var aLittleBit = Math.PI / 100000;
+
+      d3.json(datafile, function(data) {
+        var now = 1850;
+        var chart = Globalmigration.chart(data, {
+          element: '#diagram',
+          now: now,
+          animationDuration: 2000,
+          margin: 125,
+          arcPadding: 0.02,
+          layout: {
+            threshold: 0.5,
+            labelThreshold: 0.5,
+            colors: '00B400 007D00 00927D 00E6D0 0092FF 1900DE 003A7D A000FF FF00DB FF64DB D02300 FF6B21 FFAF00 FFDB00 B1FF33 7DDB00'.split(' ').map(function(c) { return '#' + c; })
+          }
+        });
+
+        Globalmigration.timeline(chart, {
+          now: now,
+          element: '#timeline'
+        });
+
+        chart.draw(now);
+      });
+    })();
+
+		var _gaq=[['_setAccount','UA-49985908-2'],['_trackPageview']];(function(a,b){var c=a.createElement(b),d=a.getElementsByTagName(b)[0];c.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";d.parentNode.insertBefore(c,d)})(document,"script");
+	</script>
+</body>
+</html>

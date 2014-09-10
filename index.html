@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+	<title>Visualising the Cultural Evolution</title>
+	<meta name=description content="An interactive visualisation of places where famous people were born and died over two centuries.">
+	<meta name=viewport content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="web_favicon.png" width="16" height="16" type="image/png">
+	<link href="dist/app-v1.css" rel="stylesheet" media="all">
+
+	<!--[if lt IE 9]><script src=javascripts/html5shiv-printshiv.js></script><![endif]-->
+  <script src="dist/app-v1.js"></script>
+</head>
+<body>
+  <div id=container class="container">
+
+    <div class="social-wrap">
+      <div class="social">
+        <div class="fb-like" data-send="false" data-layout="button_count" data-width="90px" data-show-faces="false" data-font="lucida grande"></div>
+        <div id="plusone-div"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Interactive: What Big Open Data reveal about the cultural evolution."></a>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+  	<header role="banner">
+  		<h1>What Big Open Data Reveal About the Cultural Evolution</h1>
+ 
+    <div class="credits">
+        by <a href="http://www.nikolasander.com" target="_blank">Nikola Sander</a>, Vienna Institute of Demography
+	</div>
+
+	<div class="lead-in">
+        <p>
+		A new <a href="http://www.sciencemag.org/content/345/6196/558.short" target="_blank">study by Maximilian Schich and colleagues</a> published in <i>Science</i> on August 1 
+		traces the cultural evolution in Europe and North America over the last two centuries.  
+		The authors draw on three databases (Freebase and two datasets on artists) to map the locations of birth and death of more than 150,000 notable people. 
+		</p> 
+		<p>
+		I am intrigued by their findings and hopeful that our interactive circular visualisation of the Freebase 
+		dataset, which the authors kindly <a href="http://www.sciencemag.org/content/345/6196/558/suppl/" target="_blank">made available</a> with their paper, gives a complementary view of the cultural evolution across space and time. 
+		</p>    
+		<p>
+		Explore where notable people incl. priests, artists & scientists were born and died. Hover over a country to highlight flows. Click on a country's segment to uncover cities of birth and death. Use Ctrl+r to reset. 
+		Compare to <a href="http://www.global-migration.info" target="_blank">contemporary world migration flows</a>.
+		</p>		 
+	  </div>
+  
+      <hr>
+  	</header>
+  	
+	<div class="credits">
+	<h3 style="text-align:center"><a href="#howto"><b>Click here for details on how to read the plot</b></a></h3>
+	<p style="text-align:center; line-height: 1em; margin: 20px 0 0 0;">
+	Switch between 7 periods defined by the year of death: 1CE-1600, 1601-1700, 1701-1800, 1801-1850, 1851-1900, 1901-1950, 1951-2000
+	</p>
+	</div>
+	
+  	<div class="wrap">
+  		<main role="main">
+        <nav role=navigation>
+          <div id="timeline"></div>
+        </nav>		
+        <div id="diagram"></div>
+  		</main>
+	</div>
+	
+	<footer role="contentinfo">
+
+	 <div class="column-wrap-1">
+		<div class="column">
+		<div class="column-item">
+          <h2 style="text-align:left;"><a id="howto">How to read the plot</a></h2>
+          <p>Places of birth and death are represented by the circle’s segments   
+			and each country/place is assigned a unique colour.</p>  
+          <p>Flows have the same colour as the place of birth, and the width indicates their size.
+		  There is a gap between the end of the flow and place of death (red pointers).</p> 
+          <p>Only flows between places of birth/death that recorded at least 170 migrants over the entire
+		  period are shown (<a href="images/FB_data_from_Schich.csv">download the data underlying the visualisation</a>).</p>
+		  <p>Switch between time periods using number keys (1,2,3,4,5,6,7)</p>
+
+		<img style="margin: 15px 0 0 0" src="images/legend.png">
+		  
+		</div>
+		</div>
+		
+	  <div class="clear"></div>
+	</div>  
+		  
+	<hr>	  
+	
+     <div class="column-wrap-1">
+		<div class="column">
+		<div class="column-item">
+          <h2 style="text-align:left">One Big Open Dataset - Two Visualisations</h2>
+         
+		  <p>Maximilian Schich and his colleagues visualise the cultural evolution using network flow maps. The maps in their article 
+		  titled <a href="http://www.sciencemag.org/content/345/6196/558.short" target="_blank">"A network framework of cultural history"</a> show a 
+		  very large number of arcs and nodes, making it difficult to tease out the main corridors of migration from place of birth to place of death and how they changed over time.
+		  </p> 
+		  <p>
+		  The animated visualisation of the cultural network shown in the video below by nature.com works very well. The narrated video tells an excellent story of how culture evolved 
+		  as notable people moved across the globe. The visual complexity is reduced by effective narration and a focus on one region at a time.  
+		  </p>
+		  <p>
+		  The interactive circular plot we had originally developed for visualising <a href="http://www.global-migration.info/" target="_blank">global migration flows</a> allow the cultural evolution
+		  to be viewed from a different angle. Both visualisations have their advantages and disadvantages. Network flow maps give a clear sense of location and direction, and changes over time can be 
+		  revealed effectively using animation. But it can be difficult to visualise complex and dynamic networks without overwhelming the map. 
+		  </p>
+		  <p>
+		  Circular plots cannot provide the locational detail of an (animated) network map, but they effectively summarise all flows in the system and allow direct comparisons of the sizes of flows. The
+		  large size of flows within the United States in the 20th century may point to bias and incompleteness of the Freebase dataset.
+		  A compromise we had to make so as to allow direct comparisons of flows over time was to use a 2012 geography when identifying the country that each location (identified in the Freebase data using
+		  latitute and longitude) falls into. 
+		
+		<iframe  style="margin: 30px 0 0 0" width="640" height="360" src="http://www.youtube.com/embed/4gIhRkCcD4U" frameborder="0" allowfullscreen></iframe>
+ 			
+		</div>
+		</div>
+		<div class="clear"></div>
+      </div>
+	
+	<hr>
+
+      <div class="column-wrap-1">
+        <div class="column">
+		<div class="column-item">
+          <h2 style="text-align:left">Thank you</h2>
+		  <p><a href="http://www.schich.info/">Maximilian Schich</a> and colleagues for triggering my inspiration, and for making the data freely available.</p> 
+          <p><a href="http://null2.net"><img src="images/null2.png"></a> for coding the circular plot.</p>
+          <p><a href="http://elvirastein.com/">Elvira Stein</a> for designing the screen.</p>
+          <p>Martin Krzywinski for creating <a href="http://circos.ca/">Circos</a>.</p>
+		  <p>Mike Bostock for his awesome <a href="http://d3js.org/">D3.js library</a>.</p>
+		  <p><a href="http://www.metropop.eu/">Ramon Bauer</a> for his precious feedback and collaboration.</p>
+          <p><a href="http://http://www.oeaw.ac.at/vid/">Vienna Institute of Demography</a> for supporting our data visualisation projects.</p>
+		</div>
+		</div>
+		
+	  <div class="clear"></div>
+      </div>
+
+      <hr>
+
+      <div class="license">
+        This visualisation is made available under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a> International license.</p>
+		<p style="color: #BA1212">Create your own circular plot with our <a style="color: #BA1212" href="https://github.com/jo/circular-migration-plot"  target="_blank">custom d3.js library</a>.</p> 
+      </div>
+	  
+ 	<br><br>
+
+  	</footer>
+
+   <script>
+    // help
+    (function() {
+      var help = d3.select('#help');
+
+      help.on('click', function() {
+        var isActive = help.classed('active');
+
+        help
+          .classed('active', !isActive)
+          .transition()
+          .style('width', isActive ? '30px' : '572px');
+      });
+
+      function helpOffset() {
+        var offset = Math.max((document.body.clientWidth - document.getElementById('container').clientWidth) / 2, 0);
+
+        help.style('right', offset + 'px');
+      }
+      d3.select(window).on('resize.help-resize', helpOffset);
+      helpOffset();
+    })();
+  </script>
+
+
+  <script>
+    (function() {
+      var datafile = 'json/culture_spanish.json';
+      var aLittleBit = Math.PI / 100000;
+
+      d3.json(datafile, function(data) {
+        var now = 1850;
+        var chart = Globalmigration.chart(data, {
+          element: '#diagram',
+          now: now,
+          animationDuration: 2000,
+          margin: 125,
+          arcPadding: 0.02,
+          layout: {
+            threshold: 0.5,
+            labelThreshold: 0.5,
+            colors: '00B400 007D00 00927D 00E6D0 0092FF 1900DE 003A7D A000FF FF00DB FF64DB D02300 FF6B21 FFAF00 FFDB00 B1FF33 7DDB00'.split(' ').map(function(c) { return '#' + c; })
+          }
+        });
+
+        Globalmigration.timeline(chart, {
+          now: now,
+          element: '#timeline'
+        });
+
+        chart.draw(now);
+      });
+    })();
+  </script>
+
+  <div id="fb-root"></div>
+
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    {"parsetags": "explicit"}
+  </script>
+
+  <script>
+    (function() {
+      function loadScript(d,s,l,id){
+        var js,
+        fjs=d.getElementsByTagName(s)[0],
+        p=/^http:/.test(d.location)?'http':'https';
+        if(!id || !d.getElementById(id)){
+          js=d.createElement(s);
+          js.id=id;
+          js.src=p+'://' + l;
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      }
+
+      loadScript(document, 'script', 'connect.facebook.net/en_US/all.js#xfbml=1', 'facebook-jssdk');
+      if (typeof gapi === 'object') {
+        gapi.plusone.render("plusone-div", {size: 'medium', annotation: 'bubble', width: '250px'});
+      }
+      loadScript(document, 'script', 'platform.twitter.com/widgets.js', 'twitter-wjs');
+    })();
+  </script>
+
+<!-- google analytics tag for cultural-evolution -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49985908-2', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+  
+ 
+</body>
+</html>
